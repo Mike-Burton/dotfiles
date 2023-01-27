@@ -1,0 +1,57 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+order += "volume master"
+order += "memory"
+order += "cpu_temperature 0"
+order += "cpu_usage"
+order += "load"
+order += "disk /"
+order += "tztime local"
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+memory {
+        format = "🐏: %used"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+}
+
+cpu_temperature 0 {
+	format = "🌡: %degrees"	
+}
+
+cpu_usage {
+	format = "📈: %usage"
+}
+
+
+load {
+        format = "🚚: %1min"
+}
+
+
+disk "/" {
+        format = "💾: %avail"
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
