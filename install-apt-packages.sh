@@ -21,8 +21,9 @@ apt install -y alacritty
 # blue light shift
 apt install -y redshift-gtk
 
-# git 
+# git
 add-apt-repository -y ppa:git-core/ppa
 apt update
 apt install -y git
 
+apt install -y ripgrep
