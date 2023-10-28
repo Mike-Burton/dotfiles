@@ -15,16 +15,17 @@ alt + shift - r : \
 
 
 ####### Window Management Hotkeys #############
-# change focus
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+# bsp focus || stack focus
+# if bsp focus fails the stack focus will run
+alt - h : yabai -m window --focus west || $(yabai -m window --focus stack.first)
+alt - j : yabai -m window --focus south || $(yabai -m window --focus stack.prev)
+alt - k : yabai -m window --focus north || $(yabai -m window --focus stack.next)
+alt - l : yabai -m window --focus east || $(yabai -m window --focus stack.last)
 # (alt) change focus (using arrow keys)
-alt - left  : yabai -m window --focus west
-alt - down  : yabai -m window --focus south
-alt - up    : yabai -m window --focus north
-alt - right : yabai -m window --focus east
+alt - left  : yabai -m window --focus west || $(yabai -m window --focus stack.first)
+alt - down  : yabai -m window --focus south || $(yabai -m window --focus stack.prev)
+alt - up    : yabai -m window --focus north || $(yabai -m window --focus stack.next)
+alt - right : yabai -m window --focus east || $(yabai -m window --focus stack.last)
 
 # toggle horizontal and vertically split
 alt - z : yabai -m window --toggle split
@@ -75,10 +76,10 @@ alt + shift - 8 : yabai -m window --space 8
 alt + shift - 9 : yabai -m window --space 9
 #alt + shift - 0 : yabai -m window --space 10
 
-# # mirror tree y-axis
+# mirror tree y-axis
 alt + shift - y : yabai -m space --mirror y-axis
 
-# # mirror tree x-axis
+# mirror tree x-axis
 alt + shift - x : yabai -m space --mirror x-axis
 
 # balance size of windows
@@ -98,7 +99,9 @@ cmd + shift - d : yabai -m window --resize right:-20:0
 
 # change layout of desktop
 alt         - e : yabai -m space --layout bsp
+alt - s : yabai -m space --layout stack
 alt + shift - e : yabai -m space --layout float
+
 
 # float / unfloat window and center on screen
 #alt - t : yabai -m window --toggle float;\
